@@ -12,6 +12,8 @@ namespace MiniApps
 {
     public partial class MainForm : Form
     {
+        int count = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,6 +27,24 @@ namespace MiniApps
         private void tsmiExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            count++;
+            labelNum.Text = count.ToString();
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            count--;
+            labelNum.Text = count.ToString();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            count = 0;
+            labelNum.Text = count.ToString();
         }
     }
 }
