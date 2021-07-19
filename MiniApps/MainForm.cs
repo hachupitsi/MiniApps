@@ -72,5 +72,42 @@ namespace MiniApps
         {
             Clipboard.SetText(tbRand.Text);
         }
+
+        private void tsmiSave_Click(object sender, EventArgs e)
+        {
+            rtbNotepad.SaveFile("note.rtf");
+        }
+
+        private void Load()
+        {
+            try
+            {
+                rtbNotepad.LoadFile("note.rtf");
+            }
+            catch
+            {
+                MessageBox.Show("Файл ещё не создан");
+            }
+        }
+
+        private void tsmiLoad_Click(object sender, EventArgs e)
+        {
+            Load();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Load();
+        }
+
+        private void tsmiDate_Click(object sender, EventArgs e)
+        {
+            rtbNotepad.AppendText(DateTime.Now.ToShortDateString());
+        }
+
+        private void tsmiTime_Click(object sender, EventArgs e)
+        {
+            rtbNotepad.AppendText(DateTime.Now.ToShortTimeString());
+        }
     }
 }

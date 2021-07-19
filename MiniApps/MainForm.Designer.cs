@@ -30,38 +30,48 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTime = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabConrol1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpCounter = new System.Windows.Forms.TabPage();
             this.labelNum = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonMinus = new System.Windows.Forms.Button();
             this.buttonPlus = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonRand = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonCopy = new System.Windows.Forms.Button();
-            this.randMin = new System.Windows.Forms.NumericUpDown();
-            this.randMax = new System.Windows.Forms.NumericUpDown();
-            this.randNum = new System.Windows.Forms.Label();
-            this.tbRand = new System.Windows.Forms.TextBox();
+            this.tpRandomizer = new System.Windows.Forms.TabPage();
             this.cbNoRepeat = new System.Windows.Forms.CheckBox();
+            this.tbRand = new System.Windows.Forms.TextBox();
+            this.randNum = new System.Windows.Forms.Label();
+            this.randMax = new System.Windows.Forms.NumericUpDown();
+            this.randMin = new System.Windows.Forms.NumericUpDown();
+            this.buttonCopy = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonRand = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tpNotepad = new System.Windows.Forms.TabPage();
+            this.rtbNotepad = new System.Windows.Forms.RichTextBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.tabConrol1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.randMin)).BeginInit();
+            this.tpCounter.SuspendLayout();
+            this.tpRandomizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.randMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randMin)).BeginInit();
+            this.tpNotepad.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
+            this.вставитьToolStripMenuItem,
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -72,17 +82,57 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSave,
+            this.tsmiLoad,
+            this.toolStripMenuItem1,
             this.tsmiExit});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // tsmiSave
+            // 
+            this.tsmiSave.Name = "tsmiSave";
+            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSave.Text = "Сохранить";
+            this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
+            // 
+            // tsmiLoad
+            // 
+            this.tsmiLoad.Name = "tsmiLoad";
+            this.tsmiLoad.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLoad.Text = "Загрузить";
+            this.tsmiLoad.Click += new System.EventHandler(this.tsmiLoad_Click);
+            // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(109, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
+            // 
+            // вставитьToolStripMenuItem
+            // 
+            this.вставитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDate,
+            this.tsmiTime});
+            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.вставитьToolStripMenuItem.Text = "Вставить";
+            // 
+            // tsmiDate
+            // 
+            this.tsmiDate.Name = "tsmiDate";
+            this.tsmiDate.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDate.Text = "Дата";
+            this.tsmiDate.Click += new System.EventHandler(this.tsmiDate_Click);
+            // 
+            // tsmiTime
+            // 
+            this.tsmiTime.Name = "tsmiTime";
+            this.tsmiTime.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTime.Text = "Время";
+            this.tsmiTime.Click += new System.EventHandler(this.tsmiTime_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -101,8 +151,9 @@
             // 
             // tabConrol1
             // 
-            this.tabConrol1.Controls.Add(this.tabPage1);
-            this.tabConrol1.Controls.Add(this.tabPage2);
+            this.tabConrol1.Controls.Add(this.tpCounter);
+            this.tabConrol1.Controls.Add(this.tpRandomizer);
+            this.tabConrol1.Controls.Add(this.tpNotepad);
             this.tabConrol1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabConrol1.Location = new System.Drawing.Point(0, 24);
             this.tabConrol1.Name = "tabConrol1";
@@ -110,19 +161,19 @@
             this.tabConrol1.Size = new System.Drawing.Size(800, 426);
             this.tabConrol1.TabIndex = 1;
             // 
-            // tabPage1
+            // tpCounter
             // 
-            this.tabPage1.Controls.Add(this.labelNum);
-            this.tabPage1.Controls.Add(this.buttonReset);
-            this.tabPage1.Controls.Add(this.buttonMinus);
-            this.tabPage1.Controls.Add(this.buttonPlus);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 400);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Счётчик";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpCounter.Controls.Add(this.labelNum);
+            this.tpCounter.Controls.Add(this.buttonReset);
+            this.tpCounter.Controls.Add(this.buttonMinus);
+            this.tpCounter.Controls.Add(this.buttonPlus);
+            this.tpCounter.Location = new System.Drawing.Point(4, 22);
+            this.tpCounter.Name = "tpCounter";
+            this.tpCounter.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCounter.Size = new System.Drawing.Size(792, 400);
+            this.tpCounter.TabIndex = 0;
+            this.tpCounter.Text = "Счётчик";
+            this.tpCounter.UseVisualStyleBackColor = true;
             // 
             // labelNum
             // 
@@ -167,80 +218,53 @@
             this.buttonPlus.UseVisualStyleBackColor = true;
             this.buttonPlus.Click += new System.EventHandler(this.buttonPlus_Click);
             // 
-            // tabPage2
+            // tpRandomizer
             // 
-            this.tabPage2.Controls.Add(this.cbNoRepeat);
-            this.tabPage2.Controls.Add(this.tbRand);
-            this.tabPage2.Controls.Add(this.randNum);
-            this.tabPage2.Controls.Add(this.randMax);
-            this.tabPage2.Controls.Add(this.randMin);
-            this.tabPage2.Controls.Add(this.buttonCopy);
-            this.tabPage2.Controls.Add(this.buttonClear);
-            this.tabPage2.Controls.Add(this.buttonRand);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 400);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Рандомайзер";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpRandomizer.Controls.Add(this.cbNoRepeat);
+            this.tpRandomizer.Controls.Add(this.tbRand);
+            this.tpRandomizer.Controls.Add(this.randNum);
+            this.tpRandomizer.Controls.Add(this.randMax);
+            this.tpRandomizer.Controls.Add(this.randMin);
+            this.tpRandomizer.Controls.Add(this.buttonCopy);
+            this.tpRandomizer.Controls.Add(this.buttonClear);
+            this.tpRandomizer.Controls.Add(this.buttonRand);
+            this.tpRandomizer.Controls.Add(this.label2);
+            this.tpRandomizer.Controls.Add(this.label1);
+            this.tpRandomizer.Location = new System.Drawing.Point(4, 22);
+            this.tpRandomizer.Name = "tpRandomizer";
+            this.tpRandomizer.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRandomizer.Size = new System.Drawing.Size(792, 400);
+            this.tpRandomizer.TabIndex = 1;
+            this.tpRandomizer.Text = "Рандомайзер";
+            this.tpRandomizer.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // cbNoRepeat
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "От";
+            this.cbNoRepeat.AutoSize = true;
+            this.cbNoRepeat.Location = new System.Drawing.Point(97, 260);
+            this.cbNoRepeat.Name = "cbNoRepeat";
+            this.cbNoRepeat.Size = new System.Drawing.Size(106, 17);
+            this.cbNoRepeat.TabIndex = 9;
+            this.cbNoRepeat.Text = "без повторений";
+            this.cbNoRepeat.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tbRand
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "До";
+            this.tbRand.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRand.Location = new System.Drawing.Point(295, 168);
+            this.tbRand.Multiline = true;
+            this.tbRand.Name = "tbRand";
+            this.tbRand.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRand.Size = new System.Drawing.Size(150, 160);
+            this.tbRand.TabIndex = 8;
             // 
-            // buttonRand
+            // randNum
             // 
-            this.buttonRand.Location = new System.Drawing.Point(295, 48);
-            this.buttonRand.Name = "buttonRand";
-            this.buttonRand.Size = new System.Drawing.Size(84, 23);
-            this.buttonRand.TabIndex = 2;
-            this.buttonRand.Text = "Зарандомить";
-            this.buttonRand.UseVisualStyleBackColor = true;
-            this.buttonRand.Click += new System.EventHandler(this.buttonRand_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(97, 173);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 3;
-            this.buttonClear.Text = "Очистить";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonCopy
-            // 
-            this.buttonCopy.Location = new System.Drawing.Point(97, 220);
-            this.buttonCopy.Name = "buttonCopy";
-            this.buttonCopy.Size = new System.Drawing.Size(75, 23);
-            this.buttonCopy.TabIndex = 4;
-            this.buttonCopy.Text = "Копировать";
-            this.buttonCopy.UseVisualStyleBackColor = true;
-            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
-            // 
-            // randMin
-            // 
-            this.randMin.Location = new System.Drawing.Point(97, 48);
-            this.randMin.Name = "randMin";
-            this.randMin.Size = new System.Drawing.Size(120, 20);
-            this.randMin.TabIndex = 5;
+            this.randNum.AutoSize = true;
+            this.randNum.Location = new System.Drawing.Point(292, 104);
+            this.randNum.Name = "randNum";
+            this.randNum.Size = new System.Drawing.Size(0, 13);
+            this.randNum.TabIndex = 7;
             // 
             // randMax
             // 
@@ -259,33 +283,84 @@
             0,
             0});
             // 
-            // randNum
+            // randMin
             // 
-            this.randNum.AutoSize = true;
-            this.randNum.Location = new System.Drawing.Point(292, 104);
-            this.randNum.Name = "randNum";
-            this.randNum.Size = new System.Drawing.Size(0, 13);
-            this.randNum.TabIndex = 7;
+            this.randMin.Location = new System.Drawing.Point(97, 48);
+            this.randMin.Name = "randMin";
+            this.randMin.Size = new System.Drawing.Size(120, 20);
+            this.randMin.TabIndex = 5;
             // 
-            // tbRand
+            // buttonCopy
             // 
-            this.tbRand.BackColor = System.Drawing.SystemColors.Window;
-            this.tbRand.Location = new System.Drawing.Point(295, 168);
-            this.tbRand.Multiline = true;
-            this.tbRand.Name = "tbRand";
-            this.tbRand.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbRand.Size = new System.Drawing.Size(150, 160);
-            this.tbRand.TabIndex = 8;
+            this.buttonCopy.Location = new System.Drawing.Point(97, 220);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(75, 23);
+            this.buttonCopy.TabIndex = 4;
+            this.buttonCopy.Text = "Копировать";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
-            // cbNoRepeat
+            // buttonClear
             // 
-            this.cbNoRepeat.AutoSize = true;
-            this.cbNoRepeat.Location = new System.Drawing.Point(97, 260);
-            this.cbNoRepeat.Name = "cbNoRepeat";
-            this.cbNoRepeat.Size = new System.Drawing.Size(106, 17);
-            this.cbNoRepeat.TabIndex = 9;
-            this.cbNoRepeat.Text = "без повторений";
-            this.cbNoRepeat.UseVisualStyleBackColor = true;
+            this.buttonClear.Location = new System.Drawing.Point(97, 173);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 3;
+            this.buttonClear.Text = "Очистить";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonRand
+            // 
+            this.buttonRand.Location = new System.Drawing.Point(295, 48);
+            this.buttonRand.Name = "buttonRand";
+            this.buttonRand.Size = new System.Drawing.Size(84, 23);
+            this.buttonRand.TabIndex = 2;
+            this.buttonRand.Text = "Зарандомить";
+            this.buttonRand.UseVisualStyleBackColor = true;
+            this.buttonRand.Click += new System.EventHandler(this.buttonRand_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(58, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "До";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "От";
+            // 
+            // tpNotepad
+            // 
+            this.tpNotepad.Controls.Add(this.rtbNotepad);
+            this.tpNotepad.Location = new System.Drawing.Point(4, 22);
+            this.tpNotepad.Name = "tpNotepad";
+            this.tpNotepad.Size = new System.Drawing.Size(792, 400);
+            this.tpNotepad.TabIndex = 2;
+            this.tpNotepad.Text = "Блокнот";
+            this.tpNotepad.UseVisualStyleBackColor = true;
+            // 
+            // rtbNotepad
+            // 
+            this.rtbNotepad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbNotepad.Location = new System.Drawing.Point(0, 0);
+            this.rtbNotepad.Name = "rtbNotepad";
+            this.rtbNotepad.Size = new System.Drawing.Size(792, 400);
+            this.rtbNotepad.TabIndex = 0;
+            this.rtbNotepad.Text = "";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // MainForm
             // 
@@ -300,12 +375,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabConrol1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.randMin)).EndInit();
+            this.tpCounter.ResumeLayout(false);
+            this.tpCounter.PerformLayout();
+            this.tpRandomizer.ResumeLayout(false);
+            this.tpRandomizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.randMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randMin)).EndInit();
+            this.tpNotepad.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,12 +395,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.TabControl tabConrol1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpCounter;
         private System.Windows.Forms.Label labelNum;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button buttonPlus;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpRandomizer;
         private System.Windows.Forms.Label randNum;
         private System.Windows.Forms.NumericUpDown randMax;
         private System.Windows.Forms.NumericUpDown randMin;
@@ -335,5 +411,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbRand;
         private System.Windows.Forms.CheckBox cbNoRepeat;
+        private System.Windows.Forms.TabPage tpNotepad;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSave;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLoad;
+        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTime;
+        private System.Windows.Forms.RichTextBox rtbNotepad;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
