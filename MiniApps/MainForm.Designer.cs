@@ -32,6 +32,7 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDate = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tpNotepad = new System.Windows.Forms.TabPage();
             this.rtbNotepad = new System.Windows.Forms.RichTextBox();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.passwordGen = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.passwordLength = new System.Windows.Forms.NumericUpDown();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.buttonGen = new System.Windows.Forms.Button();
+            this.clbParam = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1.SuspendLayout();
             this.tabConrol1.SuspendLayout();
             this.tpCounter.SuspendLayout();
@@ -65,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.randMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.randMin)).BeginInit();
             this.tpNotepad.SuspendLayout();
+            this.passwordGen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordLength)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,21 +101,28 @@
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsmiSave.Size = new System.Drawing.Size(173, 22);
             this.tsmiSave.Text = "Сохранить";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiLoad
             // 
             this.tsmiLoad.Name = "tsmiLoad";
-            this.tsmiLoad.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.tsmiLoad.Size = new System.Drawing.Size(173, 22);
             this.tsmiLoad.Text = "Загрузить";
             this.tsmiLoad.Click += new System.EventHandler(this.tsmiLoad_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(173, 22);
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -123,14 +138,18 @@
             // tsmiDate
             // 
             this.tsmiDate.Name = "tsmiDate";
-            this.tsmiDate.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDate.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.tsmiDate.Size = new System.Drawing.Size(181, 22);
             this.tsmiDate.Text = "Дата";
             this.tsmiDate.Click += new System.EventHandler(this.tsmiDate_Click);
             // 
             // tsmiTime
             // 
             this.tsmiTime.Name = "tsmiTime";
-            this.tsmiTime.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTime.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.tsmiTime.Size = new System.Drawing.Size(181, 22);
             this.tsmiTime.Text = "Время";
             this.tsmiTime.Click += new System.EventHandler(this.tsmiTime_Click);
             // 
@@ -154,6 +173,7 @@
             this.tabConrol1.Controls.Add(this.tpCounter);
             this.tabConrol1.Controls.Add(this.tpRandomizer);
             this.tabConrol1.Controls.Add(this.tpNotepad);
+            this.tabConrol1.Controls.Add(this.passwordGen);
             this.tabConrol1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabConrol1.Location = new System.Drawing.Point(0, 24);
             this.tabConrol1.Name = "tabConrol1";
@@ -357,10 +377,84 @@
             this.rtbNotepad.TabIndex = 0;
             this.rtbNotepad.Text = "";
             // 
-            // toolStripMenuItem1
+            // passwordGen
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.passwordGen.Controls.Add(this.label3);
+            this.passwordGen.Controls.Add(this.passwordLength);
+            this.passwordGen.Controls.Add(this.tbPassword);
+            this.passwordGen.Controls.Add(this.buttonGen);
+            this.passwordGen.Controls.Add(this.clbParam);
+            this.passwordGen.Location = new System.Drawing.Point(4, 22);
+            this.passwordGen.Name = "passwordGen";
+            this.passwordGen.Size = new System.Drawing.Size(792, 400);
+            this.passwordGen.TabIndex = 3;
+            this.passwordGen.Text = "Генератор паролей";
+            this.passwordGen.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(23, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Длина пароля";
+            // 
+            // passwordLength
+            // 
+            this.passwordLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordLength.Location = new System.Drawing.Point(128, 130);
+            this.passwordLength.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.passwordLength.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.passwordLength.Name = "passwordLength";
+            this.passwordLength.Size = new System.Drawing.Size(60, 20);
+            this.passwordLength.TabIndex = 3;
+            this.passwordLength.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(26, 210);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(219, 20);
+            this.tbPassword.TabIndex = 2;
+            // 
+            // buttonGen
+            // 
+            this.buttonGen.Location = new System.Drawing.Point(26, 165);
+            this.buttonGen.Name = "buttonGen";
+            this.buttonGen.Size = new System.Drawing.Size(219, 23);
+            this.buttonGen.TabIndex = 1;
+            this.buttonGen.Text = "Генерировать пароль";
+            this.buttonGen.UseVisualStyleBackColor = true;
+            this.buttonGen.Click += new System.EventHandler(this.buttonGen_Click);
+            // 
+            // clbParam
+            // 
+            this.clbParam.CheckOnClick = true;
+            this.clbParam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clbParam.FormattingEnabled = true;
+            this.clbParam.Items.AddRange(new object[] {
+            "Строчные буквы",
+            "Прописные буквы",
+            "Цифры",
+            "Спец. символы (@, $, &, ^, %, *)"});
+            this.clbParam.Location = new System.Drawing.Point(26, 24);
+            this.clbParam.Name = "clbParam";
+            this.clbParam.Size = new System.Drawing.Size(219, 89);
+            this.clbParam.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -372,6 +466,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Mini apps";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabConrol1.ResumeLayout(false);
@@ -382,6 +477,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.randMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.randMin)).EndInit();
             this.tpNotepad.ResumeLayout(false);
+            this.passwordGen.ResumeLayout(false);
+            this.passwordGen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,5 +517,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiTime;
         private System.Windows.Forms.RichTextBox rtbNotepad;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.TabPage passwordGen;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown passwordLength;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Button buttonGen;
+        private System.Windows.Forms.CheckedListBox clbParam;
     }
 }

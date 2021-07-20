@@ -14,6 +14,7 @@ namespace MiniApps
     {
         int count = 0;
         Random rand;
+        char[] SpecSym = new char[] {'@', '$', '&', '^', '%', '*'};
 
         public MainForm()
         {
@@ -78,7 +79,7 @@ namespace MiniApps
             rtbNotepad.SaveFile("note.rtf");
         }
 
-        private void Load()
+        private void LoadNote()
         {
             try
             {
@@ -92,12 +93,7 @@ namespace MiniApps
 
         private void tsmiLoad_Click(object sender, EventArgs e)
         {
-            Load();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Load();
+            LoadNote();
         }
 
         private void tsmiDate_Click(object sender, EventArgs e)
@@ -108,6 +104,42 @@ namespace MiniApps
         private void tsmiTime_Click(object sender, EventArgs e)
         {
             rtbNotepad.AppendText(DateTime.Now.ToShortTimeString());
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LoadNote();
+            clbParam.SetItemChecked(0, true);
+            clbParam.SetItemChecked(2, true);
+        }
+
+        private void buttonGen_Click(object sender, EventArgs e)
+        {
+            if (clbParam.CheckedItems.Count == 0)
+                return;
+            String password = "";
+            for (int i = 0; i < passwordLength.Value; i++)
+            {
+                int paramInd = rand.Next(clbParam.CheckedItems.Count);
+                String param = clbParam.CheckedItems[paramInd].ToString();
+                switch (param)
+                {
+                    case "Строчные буквы":
+                        password += Convert.ToChar(rand.Next(97, 123));
+                        break;
+                    case "Прописные буквы":
+                        password += Convert.ToChar(rand.Next(65, 91));
+                        break;
+                    case "Цифры":
+                        password += rand.Next(10);
+                        break;
+                    default:
+                        password += SpecSym[rand.Next(SpecSym.Length)];
+                        break;
+                }
+                tbPassword.Text = password;
+                Clipboard.SetText(tbPassword.Text);
+            }
         }
     }
 }
