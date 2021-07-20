@@ -15,11 +15,26 @@ namespace MiniApps
         int count = 0;
         Random rand;
         char[] SpecSym = new char[] {'@', '$', '&', '^', '%', '*'};
+        Dictionary<String, double> metrics;
 
         public MainForm()
         {
             InitializeComponent();
             rand = new Random();
+            metrics = new Dictionary<string, double>();
+            metrics.Add("мм", 1);
+            metrics.Add("см", 10);
+            metrics.Add("дм", 100);
+            metrics.Add("м", 1000);
+            metrics.Add("км", 1000000);
+            metrics.Add("дюймы", 25.4);
+            metrics.Add("футы", 304.8);
+            metrics.Add("ярды", 914.4);
+            metrics.Add("мили", 1609000);
+            metrics.Add("г", 1);
+            metrics.Add("кг", 1000);
+            metrics.Add("т", 1000000);
+            metrics.Add("фунты", 453.6);
         }
 
         private void tsmiAbout_Click(object sender, EventArgs e)
@@ -140,6 +155,63 @@ namespace MiniApps
                 tbPassword.Text = password;
                 Clipboard.SetText(tbPassword.Text);
             }
+        }
+
+        private void cbSwitch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbSwitch.Text)
+            {
+                case "Вес":
+                    cbFrom.Items.Clear();
+                    cbFrom.Items.Add("г");
+                    cbFrom.Items.Add("кг");
+                    cbFrom.Items.Add("т");
+                    cbFrom.Items.Add("фунты");
+                    cbFrom.Text = "г";
+                    cbTo.Items.Clear();
+                    cbTo.Items.Add("г");
+                    cbTo.Items.Add("кг");
+                    cbTo.Items.Add("т");
+                    cbTo.Items.Add("фунты");
+                    cbTo.Text = "г";
+                    break;
+                default:
+                    cbFrom.Items.Clear();
+                    cbFrom.Items.Add("мм");
+                    cbFrom.Items.Add("см");
+                    cbFrom.Items.Add("дм");
+                    cbFrom.Items.Add("м");
+                    cbFrom.Items.Add("км");
+                    cbFrom.Items.Add("дюймы");
+                    cbFrom.Items.Add("футы");
+                    cbFrom.Items.Add("ярды");
+                    cbFrom.Items.Add("мили");
+                    cbFrom.Text = "мм";
+                    cbTo.Items.Clear();
+                    cbTo.Items.Add("мм");
+                    cbTo.Items.Add("см");
+                    cbTo.Items.Add("дм");
+                    cbTo.Items.Add("м");
+                    cbTo.Items.Add("км");
+                    cbTo.Items.Add("дюймы");
+                    cbTo.Items.Add("футы");
+                    cbTo.Items.Add("ярды");
+                    cbTo.Items.Add("мили");
+                    cbTo.Text = "мм";
+                    break;
+            }
+        }
+
+        private void buttonSwap_Click(object sender, EventArgs e)
+        {
+            String temp = cbFrom.Text;
+            cbFrom.Text = cbTo.Text;
+            cbTo.Text = temp;
+        }
+
+        private void buttonConvert_Click(object sender, EventArgs e)
+        {
+            tbTo.Text = Convert.ToString(Convert.ToDouble(tbFrom.Text) * metrics[cbFrom.Text] / metrics[cbTo.Text]);
         }
     }
 }

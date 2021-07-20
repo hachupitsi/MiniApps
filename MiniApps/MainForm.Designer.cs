@@ -64,6 +64,14 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.buttonGen = new System.Windows.Forms.Button();
             this.clbParam = new System.Windows.Forms.CheckedListBox();
+            this.tpConverter = new System.Windows.Forms.TabPage();
+            this.cbFrom = new System.Windows.Forms.ComboBox();
+            this.cbTo = new System.Windows.Forms.ComboBox();
+            this.cbSwitch = new System.Windows.Forms.ComboBox();
+            this.buttonSwap = new System.Windows.Forms.Button();
+            this.buttonConvert = new System.Windows.Forms.Button();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.tbTo = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabConrol1.SuspendLayout();
             this.tpCounter.SuspendLayout();
@@ -73,6 +81,7 @@
             this.tpNotepad.SuspendLayout();
             this.passwordGen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordLength)).BeginInit();
+            this.tpConverter.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -174,6 +183,7 @@
             this.tabConrol1.Controls.Add(this.tpRandomizer);
             this.tabConrol1.Controls.Add(this.tpNotepad);
             this.tabConrol1.Controls.Add(this.passwordGen);
+            this.tabConrol1.Controls.Add(this.tpConverter);
             this.tabConrol1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabConrol1.Location = new System.Drawing.Point(0, 24);
             this.tabConrol1.Name = "tabConrol1";
@@ -456,6 +466,109 @@
             this.clbParam.Size = new System.Drawing.Size(219, 89);
             this.clbParam.TabIndex = 0;
             // 
+            // tpConverter
+            // 
+            this.tpConverter.Controls.Add(this.tbTo);
+            this.tpConverter.Controls.Add(this.tbFrom);
+            this.tpConverter.Controls.Add(this.buttonConvert);
+            this.tpConverter.Controls.Add(this.buttonSwap);
+            this.tpConverter.Controls.Add(this.cbSwitch);
+            this.tpConverter.Controls.Add(this.cbTo);
+            this.tpConverter.Controls.Add(this.cbFrom);
+            this.tpConverter.Location = new System.Drawing.Point(4, 22);
+            this.tpConverter.Name = "tpConverter";
+            this.tpConverter.Size = new System.Drawing.Size(792, 400);
+            this.tpConverter.TabIndex = 4;
+            this.tpConverter.Text = "Конвертер";
+            this.tpConverter.UseVisualStyleBackColor = true;
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.FormattingEnabled = true;
+            this.cbFrom.Items.AddRange(new object[] {
+            "мм",
+            "см",
+            "дм",
+            "м",
+            "км",
+            "дюймы",
+            "футы",
+            "ярды",
+            "мили"});
+            this.cbFrom.Location = new System.Drawing.Point(107, 78);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(121, 21);
+            this.cbFrom.TabIndex = 0;
+            this.cbFrom.Text = "мм";
+            // 
+            // cbTo
+            // 
+            this.cbTo.FormattingEnabled = true;
+            this.cbTo.Items.AddRange(new object[] {
+            "мм",
+            "см",
+            "дм",
+            "м",
+            "км",
+            "дюймы",
+            "футы",
+            "ярды",
+            "мили"});
+            this.cbTo.Location = new System.Drawing.Point(376, 78);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(121, 21);
+            this.cbTo.TabIndex = 1;
+            this.cbTo.Text = "мм";
+            // 
+            // cbSwitch
+            // 
+            this.cbSwitch.FormattingEnabled = true;
+            this.cbSwitch.Items.AddRange(new object[] {
+            "Длина",
+            "Вес"});
+            this.cbSwitch.Location = new System.Drawing.Point(243, 32);
+            this.cbSwitch.Name = "cbSwitch";
+            this.cbSwitch.Size = new System.Drawing.Size(121, 21);
+            this.cbSwitch.TabIndex = 2;
+            this.cbSwitch.Text = "Длина";
+            this.cbSwitch.SelectedIndexChanged += new System.EventHandler(this.cbSwitch_SelectedIndexChanged);
+            // 
+            // buttonSwap
+            // 
+            this.buttonSwap.Location = new System.Drawing.Point(255, 78);
+            this.buttonSwap.Name = "buttonSwap";
+            this.buttonSwap.Size = new System.Drawing.Size(100, 23);
+            this.buttonSwap.TabIndex = 3;
+            this.buttonSwap.Text = "<->";
+            this.buttonSwap.UseVisualStyleBackColor = true;
+            this.buttonSwap.Click += new System.EventHandler(this.buttonSwap_Click);
+            // 
+            // buttonConvert
+            // 
+            this.buttonConvert.Location = new System.Drawing.Point(255, 117);
+            this.buttonConvert.Name = "buttonConvert";
+            this.buttonConvert.Size = new System.Drawing.Size(100, 23);
+            this.buttonConvert.TabIndex = 4;
+            this.buttonConvert.Text = "Конвертировать";
+            this.buttonConvert.UseVisualStyleBackColor = true;
+            this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
+            // 
+            // tbFrom
+            // 
+            this.tbFrom.Location = new System.Drawing.Point(107, 120);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(121, 20);
+            this.tbFrom.TabIndex = 5;
+            this.tbFrom.Text = "1";
+            // 
+            // tbTo
+            // 
+            this.tbTo.Location = new System.Drawing.Point(376, 120);
+            this.tbTo.Name = "tbTo";
+            this.tbTo.ReadOnly = true;
+            this.tbTo.Size = new System.Drawing.Size(121, 20);
+            this.tbTo.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,6 +593,8 @@
             this.passwordGen.ResumeLayout(false);
             this.passwordGen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordLength)).EndInit();
+            this.tpConverter.ResumeLayout(false);
+            this.tpConverter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,5 +638,13 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button buttonGen;
         private System.Windows.Forms.CheckedListBox clbParam;
+        private System.Windows.Forms.TabPage tpConverter;
+        private System.Windows.Forms.TextBox tbTo;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.Button buttonConvert;
+        private System.Windows.Forms.Button buttonSwap;
+        private System.Windows.Forms.ComboBox cbSwitch;
+        private System.Windows.Forms.ComboBox cbTo;
+        private System.Windows.Forms.ComboBox cbFrom;
     }
 }
